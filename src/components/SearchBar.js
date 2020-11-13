@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div>
+    <div className="search">
 
-      <strong>Sort by:</strong>
+      <strong>Sort by: </strong>
       <label>
         <input type="radio" value="Alphabetically" checked={null} onChange={null}/>
         Alphabetically
@@ -16,7 +16,7 @@ const SearchBar = () => {
       <br/>
 
       <label>
-        <strong>Filter:</strong>
+        <strong>Filter: </strong>
         <select onChange={null}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
@@ -26,8 +26,8 @@ const SearchBar = () => {
 
 
     </div>
-  );
+  )
 }
 
 
-export default SearchBar;
+export default SearchBar

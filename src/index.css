@@ -17,3 +17,11 @@ h2{
   margin: 0 auto;
   text-align: center;
 }
+
+.search {
+  padding-left: 0.5rem;
+}
+
+.search label {
+  padding: 0.2rem;
+}
