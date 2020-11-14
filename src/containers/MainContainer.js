@@ -13,6 +13,7 @@ export default class MainContainer extends Component {
   }
 
   render() {
+    // display proper stocks depending on user filter selection
     let stocksToDisplay = [...this.state.stocks]
     if (this.state.filter !== 'All') {
       stocksToDisplay = stocksToDisplay.filter(stock => stock.type === this.state.filter)
@@ -20,7 +21,14 @@ export default class MainContainer extends Component {
 
     return (
       <div>
-      <SearchBar sortAlphabetical={this.sortAlphabetical} sortNumerical={this.sortNumerical} updateFilter={this.updateFilter} />
+      <SearchBar
+        sortAlphabetical={this.sortAlphabetical}
+        sortNumerical={this.sortNumerical}
+        updateFilter={this.updateFilter}
+        alphabetical={this.sortedAlphabetically}
+        numerical={this.sortedNumerically}
+        filter={this.filter}
+      />
 
           <div className="row">
             <div className="col-6">
@@ -86,7 +94,7 @@ export default class MainContainer extends Component {
     } // end if
   } // end function
 
-// function filtering the displayed stocks by category
+// function updating the filter state to only display certain stocks
   updateFilter = category => {
     this.setState({filter: category})
   }
