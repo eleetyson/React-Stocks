@@ -6,13 +6,15 @@ import SearchBar from '../components/SearchBar'
 export default class MainContainer extends Component {
   state = {
     stocks: [],
-    portfolio: []
+    portfolio: [],
+    sortedAlphabetically: false,
+    sortedNumerically: false
   }
 
   render() {
     return (
       <div>
-      <SearchBar />
+      <SearchBar sortAlphabetical={this.sortAlphabetical} sortNumerical={this.sortNumerical} />
 
           <div className="row">
             <div className="col-6">
@@ -46,9 +48,8 @@ export default class MainContainer extends Component {
       this.setState(prevState => ({
         portfolio: [...prevState.portfolio, stockToAdd]
       }))
-    }
-
-  }
+    } // end if
+  } // end function
 
 // function removing clicked stock from portfolio
   removeStock = id => {
@@ -56,5 +57,27 @@ export default class MainContainer extends Component {
       portfolio: prevState.portfolio.filter(stock => stock.id !== id)
     }))
   }
+
+// function sorting the displayed stocks alphabetically (if not already)
+  sortAlphabetical = () => {
+    if (!this.state.sortedAlphabetically) {
+      this.setState(prevState => ({
+        sortedAlphabetically: true,
+        sortedNumerically: false,
+        stocks: prevState.stocks.sort((a, b) => a.name.localeCompare(b.name))
+      }))
+    } // end if
+  } // end function
+
+// function sorting the displayed stocks in ascending price order
+  sortNumerical = () => {
+    if (!this.state.sortedNumerically) {
+      this.setState(prevState => ({
+        sortedAlphabetically: false,
+        sortedNumerically: true,
+        stocks: prevState.stocks.sort((a,b) => a.price - b.price)
+      }))
+    } // end if
+  } // end function
 
 }
