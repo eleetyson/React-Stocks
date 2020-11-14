@@ -4,7 +4,7 @@ const Stock = props => (
   <div>
 
     <div className="card">
-      <div className="card-body">
+      <div className="card-body" id={props.stock.id} onClick={() => props.stockAction(props.stock.id)}>
         <h5 className="card-title">
           {props.stock.name}
         </h5>
